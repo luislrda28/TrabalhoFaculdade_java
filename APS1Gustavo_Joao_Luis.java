@@ -106,13 +106,15 @@ if (senha.length() != 2) {
         
         // DADOS PARTICIPANTE
         } else if (opcao.equals("3")) {
-                System.out.println("Dados do Participante:");
+                System.out.println("\nDados do Participante:");
                 System.out.println("Nome: " + nome);
                 System.out.println("Email: " + email);
                 System.out.println("Senha: " + senha_completa);
-        
+                    System.exit(0);
+        }
         // POSTAGEM
         if (opcao.equals("4")) {
+            Scanner sc = new Scanner(System.in);
             int Titulo_limite = 15;
             int Postagem_limite = 150;
             int Limite_postagem = 3;
@@ -120,7 +122,7 @@ if (senha.length() != 2) {
 
             // TÍTULO VÁLIDO 01
             System.out.println("Informe o Titulo de sua postagem");
-            String titulo_postagem = scan.nextLine();
+            String titulo_postagem = sc.nextLine();
             
             if (titulo_postagem.length() > Titulo_limite) {
                 System.out.println("Titulo excedeu limite de caracteres, por favor digitar novamente!");
@@ -130,26 +132,28 @@ if (senha.length() != 2) {
             // POSTAGEM 01
             System.out.println("Titulo: \n" + titulo_postagem + "\n");
             System.out.println("Escreva sua postagem:");
-            String Postagem = scan.nextLine();
+            String Postagem = sc.nextLine();
 
-            if (Postagem.length() > Postagem_limite || Postagem.matches(".\\p{L}^a-zA-Z0-9-,À-Ö~!?;:.//-].*")) {
+            if (Postagem.length() > Postagem_limite || !Postagem.matches("[a-zA-Z0-9À-Öà-ö~,!?;:.\\s-]+")) {
                 System.out.println("Sua postagem excedeu o limite de caracteres e ou, possui caracteres especiais\nTente novamente!");
+                System.exit(0);
             } else {
                 
                 // CONFIRMAR POSTAGEM 01
                 System.out.println("\nDeseja confirmar a postagem? Digite Sim ou nao");
-                String confirmar = scan.nextLine();
+                String confirmar = sc.nextLine();
 
                 if (confirmar.toLowerCase().equals("sim")) {
                     System.out.println("Sua postagem foi postada com sucesso!\nTitulo:\n" + titulo_postagem + "\nPostagem:\n" + Postagem + "\n");
                     post++;
                 } else {
                     System.out.println("Sua postagem foi cancelada");
+                    System.exit(0);
                 }
 
                 // DESEJA SEGUIR PARA O PRÓXIMO POST?
                 System.out.println("Deseja escrever mais um post? Digite Sim ou nao");
-                String proxpost_um = scan.nextLine();
+                String proxpost_um = sc.nextLine();
 
                 if (proxpost_um.toLowerCase().equals("sim")) {
                     System.out.println("Por favor informe o titulo do seu novo post:");
@@ -161,7 +165,7 @@ if (senha.length() != 2) {
 
             // TÍTULO VÁLIDO 02
             System.out.println("Informe o Titulo de sua proxima postagem");
-            String titulo_postagem_dois = scan.nextLine();
+            String titulo_postagem_dois = sc.nextLine();
 
             if (titulo_postagem_dois.length() > Titulo_limite) {
                 System.out.println("Titulo excedeu limite de caracteres, por favor digitar novamente!");
@@ -171,27 +175,29 @@ if (senha.length() != 2) {
             // POSTAGEM 02
             System.out.println("Titulo:\n" + titulo_postagem_dois + "\n");
             System.out.println("Escreva sua postagem:");
-            String Postagem_dois = scan.nextLine();
+            String Postagem_dois = sc.nextLine();
 
-            if (Postagem_dois.length() > Postagem_limite || Postagem_dois.matches(".\\p{L}^a-zA-Z0-9-,À-Ö~!?;:.//-].*")) {
-                System.out.println("Sua postagem foi postada com sucesso!\nTitulo:\n" + titulo_postagem_dois + "\nPostagem:\n" + Postagem_dois + "\n");
+            if (Postagem_dois.length() > Postagem_limite || !Postagem_dois.matches("[a-zA-Z0-9À-Öà-ö~,!?;:.\\s-]+")) {
+                System.out.println("Sua postagem excedeu o limite de caracteres e ou, possui caracteres especiais\nTente novamente!");
+                System.exit(0);
             } else {
                 
                 // CONFIRMAR POSTAGEM 02
                 System.out.println("\nDeseja confirmar a postagem? Digite Sim ou nao");
-                String confirmar_dois = scan.nextLine();
+                String confirmar_dois = sc.nextLine();
 
                 if (confirmar_dois.toLowerCase().equals("sim")) {
                     System.out.println("Sua postagem foi postada com sucesso!\nTitulo:\n" + titulo_postagem_dois + "\nPostagem:\n" + Postagem_dois + "\n");
                     post++;
                 } else {
                     System.out.println("Sua postagem foi cancelada");
+                    System.exit(0);
                 }
             }
 
             // DESEJA SEGUIR PARA O PRÓXIMO POST?
             System.out.println("Deseja escrever mais um post? Digite Sim ou nao");
-            String proxpost_dois = scan.nextLine();
+            String proxpost_dois = sc.nextLine();
 
             if (proxpost_dois.toLowerCase().equals("sim")) {
                 System.out.println("Por favor informe o titulo do seu novo post:");
@@ -202,7 +208,7 @@ if (senha.length() != 2) {
 
             // TÍTULO VÁLIDO 03
             System.out.println("Informe o Titulo de sua proxima postagem");
-            String titulo_postagem_tres = scan.nextLine();
+            String titulo_postagem_tres = sc.nextLine();
 
             if (titulo_postagem_tres.length() > Titulo_limite) {
                 System.out.println("Titulo excedeu limite de caracteres, por favor digitar novamente!");
@@ -212,15 +218,16 @@ if (senha.length() != 2) {
             // POSTAGEM 03
             System.out.println("Titulo:\n" + titulo_postagem_tres + "\n");
             System.out.println("Escreva sua postagem:");
-            String Postagem_tres = scan.nextLine();
+            String Postagem_tres = sc.nextLine();
 
-            if (Postagem_tres.length() > Postagem_limite || Postagem_tres.matches(".*[.\\p{L}^a-zA-Z0-9-,À-Ö~!?;:.//-].*")) {
+            if (Postagem_tres.length() > Postagem_limite || !Postagem_tres.matches("[a-zA-Z0-9À-Öà-ö~,!?;:.\\s-]+")) {
                 System.out.println("Sua postagem excedeu o limite de caracteres e ou, possui caracteres especiais\nTente novamente!");
+                System.exit(0);
             } else {
                 
                 // CONFIRMAR POSTAGEM 03
                 System.out.println("\nDeseja confirmar a postagem? Digite Sim ou nao");
-                String confirmar_tres = scan.nextLine();
+                String confirmar_tres = sc.nextLine();
 
                 if (confirmar_tres.toLowerCase().equals("sim")) {
                     System.out.println("Sua postagem foi postada com sucesso!\nTitulo:\n" + titulo_postagem_tres + "\nPostagem:\n" + Postagem_tres + "\n");
@@ -237,9 +244,10 @@ if (senha.length() != 2) {
                         "\nTitulo:\n" + titulo_postagem + "\nPostagem:\n" + Postagem + "\n" +
                         "\nTitulo:\n" + titulo_postagem_dois + "\nPostagem:\n" + Postagem_dois + "\n" +
                         "\nTitulo:\n" + titulo_postagem_tres + "\nPostagem:\n" + Postagem_tres + "\n");
-            }
+                        System.exit(0);
+                
+                }
             
-           
         } else if (opcao.equals("5")) {
                 System.out.println("Informe sua senha novamente para encerrar o programa: ");
                 String senha_confirmacao = scan.nextLine();
@@ -256,8 +264,6 @@ if (senha.length() != 2) {
         } else {
                 System.out.println("Opção inválida! Tente novamente.");
                 System.exit(0);
-            }
         }
-    }
+    }       
 }
-        
