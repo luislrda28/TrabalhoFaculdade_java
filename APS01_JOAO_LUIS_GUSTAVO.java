@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
 public class APS01_JOAO_LUIS_GUSTAVO {
-
+    
+    //PARTE LUIS
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         
@@ -120,7 +121,8 @@ if (senha.length() != 2) {
                     System.exit(0);
         
         }else if (opcao.equals("4")) {
-            String nome_convidado;
+
+            //PARTE GUSTAVO
 
             Scanner sc1 = new Scanner(System.in);
 
@@ -323,6 +325,7 @@ if (senha.length() != 2) {
                 }            
         }
         
+        // PARTE JUCA
         // POSTAGEM
          }else if (opcao.equals("5")) {
             Scanner sc = new Scanner(System.in);
