@@ -252,9 +252,6 @@ if (senha.length() != 2) {
                 idadeConvidado2 = sc2.nextInt();
             }
 
-            System.out.println("\nInforme a idade do convidado 2");
-
-            idadeConvidado2 = sc2.nextInt();
 
             if (idadeConvidado2 < 12){
                 System.out.println("Idade do convidado precisa ser acima de 12 anos!");
