@@ -6,21 +6,28 @@ public class APS01_JOAO_LUIS_GUSTAVO {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         
-        String nome;
         System.out.println("Informe o seu nome completo: ");
-        nome = scan.nextLine();
-        
-        int contador_palavra = nome.length() - nome.replace(" ", "").length();
-        
-        if (contador_palavra < 1) {
+        String nome = scan.nextLine();
+
+        nome = nome.trim().replaceAll("\\s+", " ");
+
+        int palavras = nome.split("\\s+").length;
+        if (palavras < 2) {
             System.out.println("O nome completo deve possuir no mínimo duas palavras!");
             System.exit(0);
         }
+
+        if (!nome.matches("[a-zA-Z\\s]+")) {
+            System.out.println("O nome não pode conter caracteres especiais ou números!");
+            System.exit(0);
+        }
+
         if (nome.matches(".*\\b[a-zA-Z]{1,2}\\b.*")) {
             System.out.println("O nome completo deve possuir no mínimo três caracteres por palavra!");
             System.exit(0);
         }
-        if (nome.length() <= 2)  {
+
+        if (nome.length() <= 2) {
             System.out.println("Nome inválido! Digite um nome mais longo.");
             System.exit(0);
         }
@@ -45,7 +52,7 @@ public class APS01_JOAO_LUIS_GUSTAVO {
         
         String senha_completa = email.substring(0, 3) + senha;
         
-if (senha.length() != 2) {
+        if (senha.length() != 2) {
             System.out.println("Senha inválida! Deve conter exatamente dois dígitos.");
             System.exit(0);
         }
@@ -84,20 +91,31 @@ if (senha.length() != 2) {
         if (opcao.equals("1")){
             System.out.println("Informe o novo nome completo: ");
             nome = scan.nextLine();
-
-            contador_palavra = nome.length() - nome.replace(" ", "").length();
-                
-           if (contador_palavra < 1) {
-            System.out.println("O nome completo deve possuir no mínimo duas palavras!");
-            System.exit(0);
+    
+            nome = nome.trim().replaceAll("\\s+", " ");
+    
+            palavras = nome.split("\\s+").length;
+            
+            if (palavras < 2) {
+                System.out.println("O nome completo deve possuir no mínimo duas palavras!");
+                System.exit(0);
             }
-        
-            if (nome.length() <= 2)  {
+    
+            if (!nome.matches("[a-zA-Z\\s]+")) {
+                System.out.println("O nome não pode conter caracteres especiais ou números!");
+                System.exit(0);
+            }
+
+            if (nome.matches(".*\\b[a-zA-Z]{1,2}\\b.*")) {
+                System.out.println("O nome completo deve possuir no mínimo três caracteres por palavra!");
+                System.exit(0);
+            }
+    
+            if (nome.length() <= 2) {
                 System.out.println("Nome inválido! Digite um nome mais longo.");
                 System.exit(0);
             }
-                System.out.println("Seu nome foi alterado com sucesso para "+nome+".");
-                System.exit(0);
+
         // MUDAR EMAIL
         } else if (opcao.equals("2")) {
                 System.out.println("Informe o novo email: ");
