@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class APS1Gustavo_Joao_Luis {
+public class APS01_JOAO_LUIS_GUSTAVO {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -9,14 +9,18 @@ public class APS1Gustavo_Joao_Luis {
         System.out.println("Informe o seu nome completo: ");
         nome = scan.nextLine();
         
-        String[] palavras = nome.split("\\s+"); // divide o nome completo em partes separadas por espaço
+        int contador_palavra = nome.length() - nome.replace(" ", "").length();
         
-        if (nome.length() <= 2)  {
-            System.out.println("Nome inválido! Digite um nome mais longo.");
+        if (contador_palavra < 1) {
+            System.out.println("O nome completo deve possuir no mínimo duas palavras!");
             System.exit(0);
         }
-        if (palavras.length < 2) {
-            System.out.println("O nome completo deve possuir no mínimo duas palavras!");
+        if (nome.matches(".*\\b[a-zA-Z]{1,2}\\b.*")) {
+            System.out.println("O nome completo deve possuir no mínimo três caracteres por palavra!");
+            System.exit(0);
+        }
+        if (nome.length() <= 2)  {
+            System.out.println("Nome inválido! Digite um nome mais longo.");
             System.exit(0);
         }
         
@@ -68,8 +72,9 @@ if (senha.length() != 2) {
                         1-Alterar Nome.
                         2-Alterar E-mail.
                         3-Imprimir Dados do Participante.
-                        4-Criar Postagem.
-                        5-Sair do Programa.
+                        4-Cadastro de Convidados.
+                        5-Criar Postagem
+                        6-Sair do Programa
                         
         Escolha uma opção:           """);
         String opcao = scan.nextLine();
@@ -79,17 +84,19 @@ if (senha.length() != 2) {
             System.out.println("Informe o novo nome completo: ");
             nome = scan.nextLine();
 
-            palavras = nome.split("\\s+");
-
-            if (nome.length() <= 2) {
+            contador_palavra = nome.length() - nome.replace(" ", "").length();
+                
+           if (contador_palavra < 1) {
+            System.out.println("O nome completo deve possuir no mínimo duas palavras!");
+            System.exit(0);
+            }
+        
+            if (nome.length() <= 2)  {
                 System.out.println("Nome inválido! Digite um nome mais longo.");
                 System.exit(0);
             }
-            if (palavras.length < 2) {
-                System.out.println("O nome completo deve possuir no mínimo duas palavras!");
+                System.out.println("Seu nome foi alterado com sucesso para "+nome+".");
                 System.exit(0);
-            }
-
         // MUDAR EMAIL
         } else if (opcao.equals("2")) {
                 System.out.println("Informe o novo email: ");
@@ -111,9 +118,202 @@ if (senha.length() != 2) {
                 System.out.println("Email: " + email);
                 System.out.println("Senha: " + senha_completa);
                     System.exit(0);
+        
+        }else if (opcao.equals("4")) {
+            String nome_convidado;
+
+            Scanner sc1 = new Scanner(System.in);
+
+            Scanner sc2 = new Scanner(System.in);
+            
+            String convidado1 = "", convidado2 = "", convidado3 = "";
+
+        int idadeConvidado1=0, idadeConvidado2=0, idadeConvidado3=0;
+
+        String resposta;
+
+        //CONVIDADO 1
+        System.out.println("\nInforme o nome do convidado 1");
+
+        convidado1 = sc1.nextLine();
+
+        
+
+        //sem numeros
+
+        boolean nomeValido = true;
+
+        if (convidado1.contains("0")||convidado1.contains("1")
+
+                ||convidado1.contains("2")
+
+                ||convidado1.contains("3")
+
+                ||convidado1.contains("4")
+
+                ||convidado1.contains("5")
+
+                ||convidado1.contains("6")
+
+                ||convidado1.contains("7")
+
+                ||convidado1.contains("8")
+
+                ||convidado1.contains("9")){
+
+            nomeValido = false;
+            System.out.println("Nome inválido");
+            System.exit(0);
         }
+
+        //minimo de 3 caracteres por palavra
+
+        if (convidado1.matches(".*\\b\\w{1,2}\\b.*")) {
+            System.out.println("O nome completo deve possuir no mínimo três caracteres por palavra!");
+            System.exit(0);
+        }
+        if (convidado1.length() <= 2)  {
+            System.out.println("Nome inválido! Digite um nome mais longo.");
+            System.exit(0);
+        }
+        
+
+        //sem caracteres especicais
+
+        if (convidado1.matches("[a-zA-Z]+")) {
+            nomeValido = false;
+            System.out.println("Nome inválido");
+            System.exit(0);
+        }
+
+        
+        if (nomeValido){
+
+            System.out.println("\nInforme a idade do convidado 1");
+
+            idadeConvidado1 = sc2.nextInt();
+
+        }
+
+        System.out.println("\nDeseja convidar mais alguém? SIM/NAO");
+
+        resposta = sc1.nextLine();
+
+        if(resposta.trim().toUpperCase().equals("SIM")){
+
+            System.out.println("\nInforme o nome do convidado 2");
+            convidado2 = sc1.nextLine();
+
+            // sem numeros
+            nomeValido = true;
+
+            if (convidado2.contains("0") || convidado2.contains("1")
+                    || convidado2.contains("2")
+                    || convidado2.contains("3")
+                    || convidado2.contains("4")
+                    || convidado2.contains("5")
+                    || convidado2.contains("6")
+                    || convidado2.contains("7")
+                    || convidado2.contains("8")
+                    || convidado2.contains("9")) {
+
+                nomeValido = false;
+                System.out.println("Nome inválido");
+                System.exit(0);
+            }
+
+            // minimo de 3 caracteres por palavra
+            // minimo de 3 caracteres por palavra
+            //CONVIDADO 2
+            if (convidado2.matches(".*\\b\\w{1,2}\\b.*")) {
+                System.out.println("O nome completo deve possuir no mínimo três caracteres por palavra!");
+                System.exit(0);
+            }
+            if (convidado2.length() <= 2) {
+                System.out.println("Nome inválido! Digite um nome mais longo.");
+                System.exit(0);
+            }
+
+            // sem caracteres especiais
+            if (convidado2.matches("[a-zA-Z]+")) {
+                nomeValido = false;
+                System.out.println("Nome inválido");
+                System.exit(0);
+            }
+
+            if (nomeValido) {
+                System.out.println("\nInforme a idade do convidado 2");
+                idadeConvidado2 = sc2.nextInt();
+            }
+
+            System.out.println("\nInforme a idade do convidado 2");
+
+            idadeConvidado2 = sc2.nextInt();
+
+            
+
+            System.out.println("\nDeseja convidar mais alguém? SIM/NAO");
+
+            resposta = sc1.nextLine();
+
+            if (resposta.trim().toUpperCase().equals("SIM")){
+
+                System.out.println("\nInforme o nome do convidado 3");
+
+                convidado3 = sc1.nextLine();
+            
+                // sem numeros
+                nomeValido = true;
+
+                if (convidado3.contains("0") || convidado3.contains("1")
+                    || convidado3.contains("2")
+                    || convidado3.contains("3")
+                    || convidado3.contains("4")
+                    || convidado3.contains("5")
+                    || convidado3.contains("6")
+                    || convidado3.contains("7")
+                    || convidado3.contains("8")
+                    || convidado3.contains("9")) {
+
+                    nomeValido = false;
+                    System.out.println("Nome inválido");
+                    System.exit(0);
+                }
+
+                // minimo de 3 caracteres por palavra
+                if (convidado3.matches(".*\\b\\w{1,2}\\b.*")) {
+                    nomeValido = false;
+                    System.out.println("Nome inválido");
+                    System.exit(0);
+                }
+
+                // sem caracteres especiais
+                if (convidado3.matches("[a-zA-Z]+")) {
+                    nomeValido = false;
+                    System.out.println("Nome inválido");
+                    System.exit(0);
+                }
+
+                System.out.println("\nInforme a idade do convidado 3");
+
+                idadeConvidado3 = sc2.nextInt();
+
+                
+
+                System.out.println("\nDesja convidar mais alguém? SIM/NAO");
+
+                resposta = sc1.nextLine();
+
+                if (resposta.trim().toUpperCase().equals("SIM")){
+
+                    System.out.println("Limite de convites excedido.");
+
+                        }
+                }            
+        }
+        
         // POSTAGEM
-        if (opcao.equals("4")) {
+         }else if (opcao.equals("5")) {
             Scanner sc = new Scanner(System.in);
             int Titulo_limite = 15;
             int Postagem_limite = 150;
@@ -134,7 +334,7 @@ if (senha.length() != 2) {
             System.out.println("Escreva sua postagem:");
             String Postagem = sc.nextLine();
 
-            if (Postagem.length() > Postagem_limite || !Postagem.matches("[a-zA-Z0-9À-Öà-ö~,!?;:.\\s-]+")) {
+            if (Postagem.length() > Postagem_limite || !Postagem.matches("[a-zA-Z]+")) {
                 System.out.println("Sua postagem excedeu o limite de caracteres e ou, possui caracteres especiais\nTente novamente!");
                 System.exit(0);
             } else {
@@ -177,7 +377,7 @@ if (senha.length() != 2) {
             System.out.println("Escreva sua postagem:");
             String Postagem_dois = sc.nextLine();
 
-            if (Postagem_dois.length() > Postagem_limite || !Postagem_dois.matches("[a-zA-Z0-9À-Öà-ö~,!?;:.\\s-]+")) {
+            if (Postagem_dois.length() > Postagem_limite || !Postagem_dois.matches("[a-zA-Z]+")) {
                 System.out.println("Sua postagem excedeu o limite de caracteres e ou, possui caracteres especiais\nTente novamente!");
                 System.exit(0);
             } else {
@@ -220,7 +420,7 @@ if (senha.length() != 2) {
             System.out.println("Escreva sua postagem:");
             String Postagem_tres = sc.nextLine();
 
-            if (Postagem_tres.length() > Postagem_limite || !Postagem_tres.matches("[a-zA-Z0-9À-Öà-ö~,!?;:.\\s-]+")) {
+            if (Postagem_tres.length() > Postagem_limite || !Postagem_tres.matches("[a-zA-Z]+")) {
                 System.out.println("Sua postagem excedeu o limite de caracteres e ou, possui caracteres especiais\nTente novamente!");
                 System.exit(0);
             } else {
@@ -248,7 +448,7 @@ if (senha.length() != 2) {
                 
                 }
             
-        } else if (opcao.equals("5")) {
+        } else if (opcao.equals("6")) {
                 System.out.println("Informe sua senha novamente para encerrar o programa: ");
                 String senha_confirmacao = scan.nextLine();
 
