@@ -193,6 +193,10 @@ if (senha.length() != 2) {
 
             idadeConvidado1 = sc2.nextInt();
 
+            if (idadeConvidado1 < 12){
+                System.out.println("Idade do convidado precisa ser acima de 12 anos!");
+                System.exit(0);
+            }
         }
 
         System.out.println("\nDeseja convidar mais alguém? SIM/NAO");
@@ -250,7 +254,10 @@ if (senha.length() != 2) {
 
             idadeConvidado2 = sc2.nextInt();
 
-            
+            if (idadeConvidado2 < 12){
+                System.out.println("Idade do convidado precisa ser acima de 12 anos!");
+                System.exit(0);
+            }
 
             System.out.println("\nDeseja convidar mais alguém? SIM/NAO");
 
@@ -298,6 +305,10 @@ if (senha.length() != 2) {
 
                 idadeConvidado3 = sc2.nextInt();
 
+                if (idadeConvidado3 < 12){
+                    System.out.println("Idade do convidado precisa ser acima de 12 anos!");
+                    System.exit(0);
+                }
                 
 
                 System.out.println("\nDesja convidar mais alguém? SIM/NAO");
